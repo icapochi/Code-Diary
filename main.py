@@ -18,7 +18,7 @@ the_jinja_env = jinja2.Environment(
 # the handler section
 class EnterInfoHandler(webapp2.RequestHandler):
     def get(self):  # for a get request
-        welcome_template = the_jinja_env.get_template('templates/welcome.html')
+        welcome_template = the_jinja_env.get_template('templates/InputInfo.html')
         self.response.write(welcome_template.render())  # the response
         seed_data()
 
