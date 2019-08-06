@@ -22,9 +22,14 @@ class EnterInfoHandler(webapp2.RequestHandler):
         self.response.write(welcome_template.render())  # the response
         seed_data()
 
-
+class results(webapp2.RequestHandler):
+    def get(self):  # for a get request
+        tweet_info = tweetPost.query().fetch()
+        result_template = the_jinja_env.get_template('templates/result.html')
+        self.response.write(result_template.render({'tweet_info' : tweet_info}))
 
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', EnterInfoHandler), #this maps the root url to the Main Page Handler
+    ('/result', results)
 ], debug=True)
