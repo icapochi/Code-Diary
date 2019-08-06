@@ -26,6 +26,5 @@ def seed_data():
      tweetPost2= tweetPost(Author="Ibrahima", TweetType= 1, Caption= "E is my name.").put()
      tweetPost1= tweetPost(Author="Astou", TweetType= 1, Caption= "Trump isnt that bad.").put()
      tweetPost1= tweetPost(Author="Zaina", TweetType= 1, Caption= "Im only 14.").put()
-   
 
-   
+seed_data()
