@@ -17,15 +17,17 @@
 
     <h2>Coding diary</h2>
     </center>
+
+      {% for each_tweet in tweet_info %}
     <div class="tweet-box">
 
 
-  <h5>{{Author}}</h5>
-  <h5>Coding Language:{{type}}</h5>
+  <h5>{{each_tweet.Author}}</h5>
+  <h5>Coding Language:{{each_tweet.TweetType}}</h5>
 
   <br>
 
-  {{Description}}
+  {{each_tweet.Caption}}
     <br>
     {{Date}}
     <br>
@@ -34,5 +36,7 @@
     </button>
 
 </div>
+<br>
+{% endfor %}
   </body>
 </html>
