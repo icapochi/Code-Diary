@@ -4,6 +4,8 @@ import webapp2
 import jinja2
 import os
 from google.appengine.ext import ndb
+from models import userData, tweetPost
+from seedtweets import seed_data
 
 
 # This initializes the jinja2 Environment.
@@ -18,6 +20,7 @@ class EnterInfoHandler(webapp2.RequestHandler):
     def get(self):  # for a get request
         welcome_template = the_jinja_env.get_template('templates/welcome.html')
         self.response.write(welcome_template.render())  # the response
+        seed_data()
 
 
 
