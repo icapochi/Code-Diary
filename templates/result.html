@@ -15,9 +15,29 @@
   <body>
     <center>
 
-    <h2>Coding diary</h2>
+    <h1>Coding Diary</h1>
     </center>
+<br>
+<br>
+<center>
+    <form method="post">
+         <div>
+           <!-- Input for "title" -->
+           <label for="title">Name:</label>
+           <input type="text" name="name">
+<br>
+<br>
+           <label for="title">Description:</label>
+           <input type="text" name="description">
+         </div>
 
+<br>
+<br>
+<button type="submit" name="submit">submit</button>
+<br>
+<br>
+<br>
+</center>
       {% for each_tweet in tweet_info %}
     <div class="tweet-box">
 
