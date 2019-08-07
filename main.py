@@ -6,6 +6,7 @@ import os
 import datetime
 from google.appengine.ext import ndb
 from models import userData, tweetPost
+from google.appengine.api import users
 from seedtweets import seed_data
 
 
@@ -25,9 +26,17 @@ class EnterInfoHandler(webapp2.RequestHandler):
 
 class results(webapp2.RequestHandler):
     def get(self):  # for a get request
+        user = users.get_current_user()
+        if user:
+            email = user.email()
+            login_url = users.create_logout_url('/result')
+        else:
+            email = None
+            login_url = users.create_login_url('/result')
+
         tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
         result_template = the_jinja_env.get_template('templates/result.html')
-        self.response.write(result_template.render({'tweet_info' : tweet_info}))
+        self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
     def post(self):
         # user = users.get_current_user()
         # nickname = user.nickname()
@@ -43,12 +52,14 @@ class results(webapp2.RequestHandler):
 
 class logged(webapp2.RequestHandler):
     def get(self):
-        logged_in_template = the_jinja_env.get_template('teplates/logged.html')
+        logged_in_template = the_jinja_env.get_template('templates/logged.html')
+        self.response.write(logged_in_template.render())
 
 
 
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', EnterInfoHandler), #this maps the root url to the Main Page Handler
-    ('/result', results)
+    ('/result', results),
+    ('/logged', logged)
 ], debug=True)
