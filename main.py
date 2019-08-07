@@ -19,7 +19,7 @@ the_jinja_env = jinja2.Environment(
 # the handler section
 class EnterInfoHandler(webapp2.RequestHandler):
     def get(self):  # for a get request
-        welcome_template = the_jinja_env.get_template('templates/InputInfo.html')
+        welcome_template = the_jinja_env.get_template('templates/welcome.html')
         self.response.write(welcome_template.render())  # the response
         seed_data()
 
@@ -40,6 +40,12 @@ class results(webapp2.RequestHandler):
         tweet_info = tweetPost.query().order(-tweetPost.Creationtime).fetch()
         result_template = the_jinja_env.get_template('templates/result.html')
         self.response.write(result_template.render({'tweet_info' : tweet_info}))
+
+class logged(webapp2.RequestHandler):
+    def get(self):
+        logged_in_template = the_jinja_env.get_template('teplates/logged.html')
+
+
 
 # the app configuration section
 app = webapp2.WSGIApplication([
