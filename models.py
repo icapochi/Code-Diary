@@ -10,3 +10,4 @@ class tweetPost(ndb.Model):
     oAuthor = ndb.KeyProperty(userData)
     TweetType = ndb.IntegerProperty(required = True)
     Caption = ndb.StringProperty()
+    Creationtime= ndb.DateTimeProperty()

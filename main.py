@@ -3,6 +3,7 @@
 import webapp2
 import jinja2
 import os
+import datetime
 from google.appengine.ext import ndb
 from models import userData, tweetPost
 from seedtweets import seed_data
@@ -24,7 +25,7 @@ class EnterInfoHandler(webapp2.RequestHandler):
 
 class results(webapp2.RequestHandler):
     def get(self):  # for a get request
-        tweet_info = tweetPost.query().fetch()
+        tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
         result_template = the_jinja_env.get_template('templates/result.html')
         self.response.write(result_template.render({'tweet_info' : tweet_info}))
     def post(self):
@@ -33,10 +34,10 @@ class results(webapp2.RequestHandler):
         # Use the user input to create a new blog post
         name_input = self.request.get('name')
         description_input = self.request.get('description')
-
-        tweetoutput = tweetPost(Author=name_input, Caption=description_input, TweetType=1)
+        currenttime= datetime.datetime.now()
+        tweetoutput = tweetPost(Author=name_input, Caption=description_input, TweetType=1, Creationtime=currenttime)
         tweetoutput.put()
-        tweet_info = tweetPost.query().fetch()
+        tweet_info = tweetPost.query().order(-tweetPost.Creationtime).fetch()
         result_template = the_jinja_env.get_template('templates/result.html')
         self.response.write(result_template.render({'tweet_info' : tweet_info}))
 
