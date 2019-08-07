@@ -1,62 +1,144 @@
+
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <style media="screen">
-.tweet-box {
-  border: 1px solid;
-  width: 25%;
-  margin: auto;
-}
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
 
-    </style>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <center>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style media="screen">
+    .icon-block {
+    padding: 0 15px;
+    }
+    .icon-block .material-icons {
+    font-size: inherit;
+    }
+  </style>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">CodeDiary</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
 
-    <h1>Coding Diary</h1>
-    </center>
-<br>
-<br>
-<center>
-    <form method="post">
-         <div>
-           <!-- Input for "title" -->
-           <label for="title">Name:</label>
-           <input type="text" name="name">
-<br>
-<br>
-           <label for="title">Description:</label>
-           <input type="text" name="description">
-         </div>
-
-<br>
-<br>
-<button type="submit" name="submit">submit</button>
-<br>
-<br>
-<br>
-</center>
-      {% for each_tweet in tweet_info %}
-    <div class="tweet-box">
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
 
 
-  <h5>{{each_tweet.Author}}</h5>
-  <h5>Coding Language:{{each_tweet.TweetType}}</h5>
-
+  <div class="container" id="index-banner">
+  <!-- /////////////////add form below here /////////////////////////// -->
+<form class=""  method="post">
   <br>
+  <div class="row">
+      <div class="input-field col s6">
+        <input value="" id="first_name2" name="name" type="text" class="validate">
+        <label class="active" for="first_name2">First Name</label>
+      </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+          <input value="" id="description" name="description" type="text" class="validate">
+          <label class="active" for="description">Description</label>
+        </div>
+      </div>
 
-  {{each_tweet.Caption}}
-    <br>
-    {{Date}}
-    <br>
-    <button type="button" name="comments">
-    comments
-    </button>
+  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
 
-</div>
-<br>
+</form>
+
+
+
+  <!-- /////////////////////add form above here////////////////////////// -->
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+<!-- /////////////// add card below here //////////////////////// -->
+{% for each_tweet in tweet_info %}
+
+  <div class="row">
+    <div class="col s12 ">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{each_tweet.Author}}</span>
+          <p>{{each_tweet.Caption}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endfor %}
+<!--/////////////////// add card above here ///////////////////////-->
+    </div>
+
+    <br><br>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+  (function($){
+    $(function(){
+
+      $('.sidenav').sidenav();
+
+    }); // end of document ready
+  })(jQuery); // end of jQuery name space
+  </script>
+
   </body>
 </html>
