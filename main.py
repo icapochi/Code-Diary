@@ -30,14 +30,24 @@ class results(webapp2.RequestHandler):
         user = users.get_current_user()
         if user:
             email = user.email()
+            email_address = user.nickname()
             login_url = users.create_logout_url('/')
+            the_user = userData.query().filter(userData.sEmail == email_address).get()
+
+            if the_user:
+                tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
+                result_template = the_jinja_env.get_template('templates/result.html')
+                self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
+
+            else:
+                self.redirect('/signup')
         else:
             email = None
             login_url = users.create_login_url('/')
 
-        tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
-        result_template = the_jinja_env.get_template('templates/result.html')
-        self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
+            tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
+            result_template = the_jinja_env.get_template('templates/result.html')
+            self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
     def post(self):
         # user = users.get_current_user()
         # nickname = user.nickname()
@@ -61,11 +71,16 @@ class logged(webapp2.RequestHandler):
         logged_in_template = the_jinja_env.get_template('templates/signUp.html')
         self.response.write(logged_in_template.render())
 
+class navToSign(webapp2.RequestHandler):
+    def get(self):
+        signup_template = the_jinja_env.get_template('templates/signUp.html')
+        self.response.write(signup_template.render())
 
 
 # the app configuration section
 app = webapp2.WSGIApplication([
     #('/', EnterInfoHandler), #this maps the root url to the Main Page Handler
     ('/', results),
-    ('/in', logged)
+    ('/in', logged),
+    ('/signup', navToSign)
 ], debug=True)
