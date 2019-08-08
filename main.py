@@ -31,13 +31,13 @@ class results(webapp2.RequestHandler):
         if user:
             email = user.email()
             email_address = user.nickname()
-            login_url = users.create_logout_url('/')
+            login_url = users.create_logout_url('/result')
             tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
             result_template = the_jinja_env.get_template('templates/result.html')
-            self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))  
+            self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
         else:
             email = None
-            login_url = users.create_login_url('/')
+            login_url = users.create_login_url('/result')
 
             tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
             result_template = the_jinja_env.get_template('templates/result.html')
@@ -49,7 +49,7 @@ class results(webapp2.RequestHandler):
         user = users.get_current_user()
         if user:
             email = user.email()
-            login_url = users.create_login_url('/')
+            login_url = users.create_logout_url('/result')
             name_input = self.request.get('name')
             description_input = self.request.get('description')
             currenttime= datetime.datetime.now()
