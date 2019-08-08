@@ -20,7 +20,7 @@ the_jinja_env = jinja2.Environment(
 # the handler section
 class EnterInfoHandler(webapp2.RequestHandler):
     def get(self):  # for a get request
-        welcome_template = the_jinja_env.get_template('templates/welcome.html')
+        welcome_template = the_jinja_env.get_template('templates/result.html')
         self.response.write(welcome_template.render())  # the response
         seed_data()
 
@@ -29,10 +29,10 @@ class results(webapp2.RequestHandler):
         user = users.get_current_user()
         if user:
             email = user.email()
-            login_url = users.create_logout_url('/result')
+            login_url = users.create_logout_url('/')
         else:
             email = None
-            login_url = users.create_login_url('/result')
+            login_url = users.create_login_url('/')
 
         tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
         result_template = the_jinja_env.get_template('templates/result.html')
@@ -52,14 +52,14 @@ class results(webapp2.RequestHandler):
 
 class logged(webapp2.RequestHandler):
     def get(self):
-        logged_in_template = the_jinja_env.get_template('templates/logged.html')
+        logged_in_template = the_jinja_env.get_template('templates/signUp.html')
         self.response.write(logged_in_template.render())
 
 
 
 # the app configuration section
 app = webapp2.WSGIApplication([
-    ('/', EnterInfoHandler), #this maps the root url to the Main Page Handler
-    ('/result', results),
-    ('/logged', logged)
+    #('/', EnterInfoHandler), #this maps the root url to the Main Page Handler
+    ('/', results),
+    ('/in', logged)
 ], debug=True)
