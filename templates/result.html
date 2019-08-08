@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Starter Template - Materialize</title>
@@ -21,7 +22,7 @@
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="result" class="brand-logo">CodeDiary</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">CodeDiary</a>
       <ul class="right hide-on-med-and-down">
         {% if user %}
           <li><a href="{{login_url}}">Logout</a></li>
@@ -34,7 +35,7 @@
       <ul id="nav-mobile" class="sidenav">
         <li><a href="{{login_url}}">Login</a></li>
       </ul>
-      <a href="result" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="/" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 
@@ -58,13 +59,13 @@
        <br>
        <div class="row">
            <div class="input-field col s6">
-             <input value="" id="first_name2" name="name" type="text" class="validate">
+             <input value="" id="first_name2" name="name" type="text" class="validate" required = true>
              <label class="active" for="first_name2">First Name</label>
            </div>
          </div>
          <div class="row">
              <div class="input-field col s6">
-               <input value="" id="description" name="description" type="text" class="validate">
+               <input value="" id="description" name="description" type="text" class="validate" required = true>
                <label class="active" for="description">Description</label>
              </div>
            </div>
