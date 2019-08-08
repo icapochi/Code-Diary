@@ -18,6 +18,10 @@
     .icon-block .material-icons {
     font-size: inherit;
     }
+    .modal-trigger {
+      position: fixed;
+      left: 85%;
+    }
   </style>
 </head>
 <body>
@@ -47,8 +51,8 @@
     <!-- Modal Trigger -->
     <br>
     {% if user %}
-
- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Post</a>
+<a class="btn-floating btn-large cyan pulse modal-trigger" href="#modal1"><i class="material-icons">edit</i></a>
+ <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Post</a> -->
 
  {% endif %}
  <!-- Modal Structure -->
