@@ -21,8 +21,8 @@ the_jinja_env = jinja2.Environment(
 # the handler section
 class EnterInfoHandler(webapp2.RequestHandler):
     def get(self):  # for a get request
-        welcome_template = the_jinja_env.get_template('templates/result.html')
-        self.response.write(welcome_template.render())  # the response
+        result_template = the_jinja_env.get_template('templates/result.html')
+        self.response.write(result_template.render())  # the response
 
 
 class results(webapp2.RequestHandler):
@@ -32,15 +32,9 @@ class results(webapp2.RequestHandler):
             email = user.email()
             email_address = user.nickname()
             login_url = users.create_logout_url('/')
-            the_user = userData.query().filter(userData.sEmail == email_address).get()
-
-            if the_user:
-                tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
-                result_template = the_jinja_env.get_template('templates/result.html')
-                self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
-
-            else:
-                self.redirect('/signup')
+            tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
+            result_template = the_jinja_env.get_template('templates/result.html')
+            self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))  
         else:
             email = None
             login_url = users.create_login_url('/')
@@ -76,11 +70,17 @@ class navToSign(webapp2.RequestHandler):
         signup_template = the_jinja_env.get_template('templates/signUp.html')
         self.response.write(signup_template.render())
 
+class welcome(webapp2.RequestHandler):
+    def get(self):
+        welcome_template = the_jinja_env.get_template('templates/welcome.html')
+        self.response.write(welcome_template.render())
+
 
 # the app configuration section
 app = webapp2.WSGIApplication([
     #('/', EnterInfoHandler), #this maps the root url to the Main Page Handler
-    ('/', results),
+    ('/result', results),
     ('/in', logged),
-    ('/signup', navToSign)
+    ('/signup', navToSign),
+    ('/', welcome)
 ], debug=True)
