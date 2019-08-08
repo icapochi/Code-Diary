@@ -1,27 +1,140 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <form class="login" action="/logged" method="post">
-      <div class="user-pass">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
 
-        <input id = "user1" type="text" name="" value="" placeholder="Username" required = true><br>
-        <input id = "pass1" type="password" name="" value="" placeholder="Password" required = true><br>
-        <button type="submit" name="Sign Up">Sign Up</button>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <style media="screen">
+
+    .icon-block {
+     padding: 0 15px;
+    }
+    .icon-block .material-icons {
+      font-size: inherit;
+    }
+   </style>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Codiary</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Join the team</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Code Diary</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">
+          Where developers Grow, Learn, and Share!
+        </h5>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">question_answers</i></h2>
+            <h5 class="center">Questions answered daily</h5>
+
+            <p class="light">Coding isn't easy, which is why we've enabled a hub allowing developers all over the globe to use our microblogging service to continue the work they love.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">language</i></h2>
+            <h5 class="center">Learn about different languages</h5>
+
+            <p class="light">Learn about different languages and how other developers are maneuvering through their journeys. Utilize our user friendly interface elements and principles allowing you to network and widen your horizon. </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">trending_up</i></h2>
+            <h5 class="center">Showcase your talents</h5>
+
+            <p class="light">We have provided profile pages for all our users, allowing them to show their past projects,Q&A's, and current work. Create Yours today!</p>
+          </div>
+        </div>
       </div>
 
-    </form>
-  </body>
-  <style media="screen">
-  .user-pass {
-    text-align: center;
-  }
-  body {
-    background-color: tomato;
-  }
-  </style>
+    </div>
+    <br><br>
+  </div>
 
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of Google CSSI Extension students at UB, dedicated to providing a hub for devlopers all over the globe growing and learning one question at a time.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Access Maps</a></li>
+            <li><a class="white-text" href="#!">Contact Us</a></li>
+            <li><a class="white-text" href="#!">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Meet the team</h5>
+            <u1>
+              <li><a class="white-text" href="#!">Astou Diallo</a></li>
+              <li><a class="white-text" href="#!">Youssoupha Cisse</a></li>
+              <li><a class="white-text" href="#!">Zaina Abuzneid</a></li>
+              <li><a class="white-text" href="#!">Ibrahima Capo-Chichi</a></li>
+            </u1>
+        </div>
+    </div>
+    <div class="footer-scopyright">
+      <div class="container">
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    (function($){
+      $(function(){
+
+      $('.sidenav').sidenav();
+
+    }); // end of document ready
+    })(jQuery); // end of jQuery name space
+
+  </script>
+
+  </body>
 </html>
