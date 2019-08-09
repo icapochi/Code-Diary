@@ -32,14 +32,14 @@ class results(webapp2.RequestHandler):
             email = user.email()
             email_address = user.nickname()
             login_url = users.create_logout_url('/result')
-            tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
+            tweet_info = tweetPost.query().order(-tweetPost.Creationtime).fetch(10)
             result_template = the_jinja_env.get_template('templates/result.html')
             self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
         else:
             email = None
             login_url = users.create_login_url('/result')
 
-            tweet_info = tweetPost.query().order(tweetPost.Creationtime).fetch()
+            tweet_info = tweetPost.query().order(-tweetPost.Creationtime).fetch(10)
             result_template = the_jinja_env.get_template('templates/result.html')
             self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
     def post(self):
@@ -56,7 +56,7 @@ class results(webapp2.RequestHandler):
             tweetoutput = tweetPost(Author=name_input, Caption=description_input, TweetType=1, Creationtime=currenttime)
             tweetoutput.put()
             time.sleep(1)
-            tweet_info = tweetPost.query().order(-tweetPost.Creationtime).fetch()
+            tweet_info = tweetPost.query().order(-tweetPost.Creationtime).fetch(10)
             result_template = the_jinja_env.get_template('templates/result.html')
             self.response.write(result_template.render({'tweet_info' : tweet_info, "user" : user, "login_url" : login_url}))
 
